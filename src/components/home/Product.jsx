@@ -9,9 +9,9 @@ const Product = ({ product }) => {
       onClick={() => navigate(`products/${product._id}`)}
       className="w-[407px] p-5 m-2 border rounded-[8%] relative h-[380px]"
     >
-      <div className="text-2xl font-bold absolute rounded-full top-2 right-1.5 bg-black text-white">
+      <div className="text-2xl font-bold absolute rounded-full top-2 p-2 right-1.5 bg-black text-white">
         {" "}
-        {product?.price} <span className="text-sm">$</span>{" "}
+        {product?.price} <span className="text-sm">DH</span>{" "}
       </div>
       <img
         className="w-[250px] h-[250px] object-contain m-auto"
@@ -19,7 +19,7 @@ const Product = ({ product }) => {
         alt=""
       />
       <div className="text-center px-3 m-3 font-extrabold text-lg cursor-pointer absolute">
-        {product?.title} {product?.category_id}
+        {product?.title} 
       </div>
     </div>
   );
