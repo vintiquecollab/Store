@@ -1,22 +1,27 @@
-import "./App.css";
-import Header from "./components/header/Header";
-import Login from "./components/auth/login/Login";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Hero from "./components/hero/Hero";
-import TopCategories from "./components/top-categories/TopCategories";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import PageContainer from "./containers/PageContainer";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Detail from "./pages/Detail";
+import Cart from "./pages/Cart";
+import Search from "./pages/Search";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Header />
-        <Hero />
-        <TopCategories />
+    <>
+      <PageContainer>
+        <Navbar />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/products/:id" element={<Detail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/products/search" element={<Search />} />
+
         </Routes>
-      </div>
-    </Router>
+      </PageContainer>
+    </>
   );
 }
 

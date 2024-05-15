@@ -101,7 +101,7 @@ export default function Example() {
   };
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-white shadow-lg">
+    <div className="fixed top-0 w-full z-50 bg-white shadow-lg ">
       {/* Mobile menu */}
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
         <Dialog
@@ -132,7 +132,7 @@ export default function Example() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl mt-[100px]">
                 <div className="flex px-4 pb-2 pt-5">
                   <button
                     type="button"
