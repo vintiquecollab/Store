@@ -25,7 +25,7 @@ const Navbar = () => {
         onClick={() => navigate("/")}
       >
         <img
-          src="src\images\vintique.png"
+          src=".\src\images\vintique.png"
           alt="logo"
           className="w-[150px] h-[150px]"
         />

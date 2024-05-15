@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 
 const Detail = () => {
   const { id } = useParams();
+  console.log("id",id)
   const dispatch = useDispatch();
   const { productDetailStatus, productDetails } = useSelector(
     (state) => state.products
@@ -14,17 +15,16 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getDetailProduct(id));
-  }, [dispatch, id]);
-
-  console.log(productDetails, "details");
+  }, []);
+ 
   return (
     <div>
-      {productDetailStatus == "LOADING" ? (
-        <Loading />
-      ) : (
-        <DetailComp productDetail={productDetails} />
-      )}
-    </div>
+    {productDetailStatus == "LOADING" ? (
+      <Loading />
+    ) : (
+      <DetailComp productDetail={productDetails} />
+    )}
+  </div>
   );
 };
 

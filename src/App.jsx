@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import Search from "./pages/Search";
 
 function App() {
+  console.log("s")
   return (
     <>
       <PageContainer>

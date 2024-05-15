@@ -17,17 +17,19 @@ export const getProducts = createAsyncThunk("getproducts", async () => {
 export const getCategoryProduct = createAsyncThunk(
   "products/getCategoryProduct",
   async (category) => {
+    const idCategory=category._id
     const response = await fetch(
-      `http://localhost:3001/products/category/${category}`
+      `http://localhost:3001/product/category/${idCategory}`
     );
     const data = await response.json(); // Await the response.json() method
-    console.log("selected", data);
+    
     return data;
   }
 );
 
-export const getDetailProduct = createAsyncThunk("getproduct", async (id) => {
-  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+export const getDetailProduct = createAsyncThunk("products/getDetailProduct", async (id) => {
+  console.log("wa id",id)
+  const response = await fetch(`http://localhost:3001/product/${id}`);
   const data = response.json();
   return data;
 });

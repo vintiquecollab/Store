@@ -16,9 +16,9 @@ const DetailComp = ({ productDetail }) => {
   const addBasket = () => {
     dispatch(
       addToCart({
-        id: productDetail?.id,
+        id: productDetail?._id,
         title: productDetail?.title,
-        image: productDetail?.image,
+        image: productDetail?.media?.url,
         quantity: quantity,
         price: productDetail?.price,
       })
@@ -29,7 +29,7 @@ const DetailComp = ({ productDetail }) => {
     <div className="flex gap-10 my-10">
       <img
         className="w-[650px] h-[650px] object-contain my-12"
-        src={productDetail?.image}
+        src={productDetail?.media?.url}
       />
       <div className="flex flex-col gap-4 my-auto mx-3">
         <div className="text-4xl font-bold">{productDetail?.title}</div>
