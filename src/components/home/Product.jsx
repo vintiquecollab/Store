@@ -9,8 +9,9 @@ const Product = ({ product }) => {
       onClick={() => navigate(`products/${product._id}`)}
       className="group max-w-xs p-6 m-4 border border-gray-200 rounded-xl shadow-lg relative h-96 cursor-pointer hover:shadow-2xl transition-shadow duration-300 bg-white"
     >
-      <div className="text-xl font-semibold absolute rounded-full top-4 right-4 bg-gray-800 text-white px-3 py-1">
-        {product?.price} <span className="text-sm">$</span>
+      <div className="text-2xl font-bold absolute rounded-full top-2 p-2 right-1.5 bg-black text-white">
+        {" "}
+        {product?.price} <span className="text-sm">DH</span>{" "}
       </div>
       <img
         className="w-56 h-56 object-contain m-auto mb-4"
