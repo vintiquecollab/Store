@@ -22,11 +22,15 @@ const Cart = () => {
           {carts?.map((cart, i) => (
             <CartComp key={i} cart={cart} />
           ))}
-          <div className="flex justify-end text-xl font-bold ">TOPLAM TUTAR: <span className="text-green-600 text-2xl ml-2">{totalAmount} TL </span>
+          <div className="flex justify-end text-xl font-bold ">
+            TOTAL:{" "}
+            <span className="text-green-600 text-2xl ml-2">
+              {totalAmount} TL{" "}
+            </span>
           </div>
         </div>
       ) : (
-        <div>Kartınız boş...</div>  
+        <div>No products...</div>
       )}
     </div>
   );

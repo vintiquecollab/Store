@@ -15,13 +15,13 @@ const CartComp = ({ cart }) => {
       <div className="w-[476px] ">
         <div className="text-xl font-bold"> {cart?.title} </div>
       </div>
-      <div className="font-bold text-2xl"> {cart?.price} TL </div>
+      <div className="font-bold text-2xl"> {cart?.price} DH </div>
       <div className="font-bold text-xl"> {cart?.quantity} </div>
       <div
         onClick={() => dispatch(removeFromCart(cart?.id))}
         className="cursor-pointer bg-red-500 rounded-xl text-white w-[100px] h-[16] flex items-center justify-center "
       >
-        Ürünü Sil
+        Remove
       </div>
     </div>
   );

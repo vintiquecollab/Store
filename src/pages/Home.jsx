@@ -11,8 +11,8 @@ const Home = () => {
   return (
     <div>
       <SliderComp />
-      <Sorting setSort={setSort} />
-      <div className="flex">
+
+      <div className="flex mt-12">
         <Category setCategory={setCategory} />
         <Products category={category} sort={sort} />
       </div>

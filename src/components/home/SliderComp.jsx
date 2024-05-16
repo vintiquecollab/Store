@@ -14,53 +14,48 @@ const SliderComp = () => {
       <Slider {...settings}>
         <div className="!flex items-center justify-center px-4">
           <div>
-            <h1 className="text-4xl font-bold py-8">En Kaliteli Ayakkabılar Burada</h1>
+            <h1 className="text-4xl font-bold py-8">MacBook Pro 13</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
               corporis voluptate eveniet ullam architecto. Quod impedit quia
               repudiandae nostrum tenetur aspernatur assumenda culpa odit et, at
               earum est hic error.
             </p>
-            <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">incele</button>
+            <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">
+              SHOP
+            </button>
           </div>
-          <img
-            src="https://productimages.hepsiburada.net/s/253/550/110000235647723.jpg/format:webp"
-            alt=""
-          />
+          <img src="src\assets\mac.png" alt="" className="w-[2] h-[2]" />
         </div>
         <div className="!flex items-center justify-center">
           <div>
-            <h1 className="text-4xl font-bold py-8">En Kaliteli Ayakkabılar Burada</h1>
+            <h1 className="text-4xl font-bold py-8">Fashion</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
               corporis voluptate eveniet ullam architecto. Quod impedit quia
               repudiandae nostrum tenetur aspernatur assumenda culpa odit et, at
               earum est hic error.
             </p>
-            <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">incele</button>
-
+            <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">
+              SHOP
+            </button>
           </div>
-          <img
-            src="https://productimages.hepsiburada.net/s/118/550/110000067634684.jpg/format:webp"
-            alt=""
-          />
+          <img src="src\assets\clothes.png" alt="" />
         </div>
         <div className="!flex items-center justify-center">
           <div>
-            <h1 className="text-4xl font-bold py-8">En Kaliteli Ayakkabılar Burada</h1>
+            <h1 className="text-4xl font-bold py-8">Art</h1>
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
               corporis voluptate eveniet ullam architecto. Quod impedit quia
               repudiandae nostrum tenetur aspernatur assumenda culpa odit et, at
               earum est hic error.
             </p>
-            <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">incele</button>
-
+            <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">
+              SHOP
+            </button>
           </div>
-          <img
-            src="https://productimages.hepsiburada.net/s/431/550/110000463260211.jpg/format:webp"
-            alt=""
-          />
+          <img src="src\assets\art.png" alt="" />
         </div>
       </Slider>
     </div>

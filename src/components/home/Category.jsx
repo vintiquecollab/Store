@@ -11,17 +11,21 @@ const Category = ({ setCategory }) => {
   }, [dispatch]);
 
   return (
-    <div className="w-1/6 bg-gray-100 p-4 max-h-screen rounded-md">
-      <div className="border-b pb-1 text-xl px-2">Category</div>
-      {categories?.map((category) => (
-        <div
-          onClick={() => setCategory(category)}
-          className="text-lg mt-1.5 cursor-pointer hover:bg-gray-200 p-2"
-          key={category._id} // Assuming _id is unique
-        >
-          {category.name} {/* Render the name property */}
-        </div>
-      ))}
+    <div className="w-1/4 bg-white p-6 rounded-lg shadow-lg">
+      <div className="border-b pb-2 text-xl font-semibold text-gray-800 mb-4">
+        Categories
+      </div>
+      <div className="overflow-hidden">
+        {categories?.map((category) => (
+          <div
+            onClick={() => setCategory(category)}
+            className="text-lg cursor-pointer hover:bg-gray-100 p-3 rounded-md transition-colors duration-300 ease-in-out"
+            key={category._id} // Assuming _id is unique
+          >
+            {category.name}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

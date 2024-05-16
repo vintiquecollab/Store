@@ -47,14 +47,18 @@ const Products = ({ category, sort }) => {
               ))}
           </div>
           <ReactPaginate
-            className="paginate"
             breakLabel="..."
             nextLabel=">"
             onPageChange={handlePageClick}
             pageRangeDisplayed={5}
             pageCount={pageCount}
             previousLabel="<"
-            renderOnZeroPageCount={null}
+            containerClassName="flex justify-center my-6"
+            pageLinkClassName="px-4 py-2 mx-1 rounded-md text-gray-800 bg-gray-200 hover:bg-gray-300"
+            activeLinkClassName="px-4 py-2 mx-1 rounded-md text-white bg-blue-500 hover:bg-blue-600"
+            breakLinkClassName="px-4 py-2 mx-1 rounded-md text-gray-800 bg-gray-200 hover:bg-gray-300"
+            previousLinkClassName="px-4 py-2 mx-1 rounded-md text-gray-800 bg-gray-200 hover:bg-gray-300"
+            nextLinkClassName="px-4 py-2 mx-1 rounded-md text-gray-800 bg-gray-200 hover:bg-gray-300"
           />
         </>
       )}

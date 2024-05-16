@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     // Main Navbar
-    <div className="flex justify-between items-center my-2 py-2">
+    <div className="flex justify-between items-center  ">
       {/* Left Navbar */}
       <div
         className="text-6xl mx-12 cursor-pointer"
@@ -43,7 +43,7 @@ const Navbar = () => {
           />
           <BiSearch size={28} className="hover:animate-pulse" />
         </div>
-        <AiOutlineHeart size={28} />
+        {/* <AiOutlineHeart size={28} /> */}
         <div onClick={() => navigate("cart")} className="relative">
           <div
             className="absolute -top-3 -right-3 bg-red-500

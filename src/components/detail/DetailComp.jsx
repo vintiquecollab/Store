@@ -6,13 +6,16 @@ import { addToCart } from "../../redux/slices/cartSlice";
 const DetailComp = ({ productDetail }) => {
   const dispatch = useDispatch();
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+
   const decrement = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
+    if (quantity > 1) setQuantity(quantity - 1);
   };
+
   const increment = () => {
     if (quantity < productDetail?.rating.count) setQuantity(quantity + 1);
   };
+
   const addBasket = () => {
     dispatch(
       addToCart({
@@ -28,42 +31,40 @@ const DetailComp = ({ productDetail }) => {
   return (
     <div className="flex gap-10 my-10">
       <img
-        className="w-[650px] h-[650px] object-contain my-12"
+        className="w-96 h-96 object-cover my-auto"
         src={productDetail?.media?.url}
+        alt={productDetail?.title}
       />
       <div className="flex flex-col gap-4 my-auto mx-3">
-        <div className="text-4xl font-bold">{productDetail?.title}</div>
-        <div className="my-2">{productDetail?.description}</div>
+        <h1 className="text-4xl font-bold">{productDetail?.title}</h1>
+        <p className="text-lg">{productDetail?.description}</p>
         <div className="text-red-500 text-lg">
           {/* Rating : {productDetail?.rating.rate} */}
         </div>
         {/* <div>Count : {productDetail?.rating.count}</div> */}
         <div className="text-4xl font-extrabold text-green-600">
-          {productDetail?.price} <span className="text-sm">TL</span>
+          {productDetail?.price} <span className="text-sm">DH</span>
         </div>
         <div className="flex items-center gap-5">
-          <div onClick={decrement} className="text-4xl cursor-pointer">
+          <button onClick={decrement} className="text-4xl cursor-pointer">
             -
-          </div>
+          </button>
           <input
             type="text"
             value={quantity}
-            className="w-12 text-center text-2xl font-semibold rounded-full"
+            className="w-20 text-center text-2xl font-semibold rounded-full bg-gray-100"
             disabled
           />
-
-          <div onClick={increment} className="text-4xl cursor-pointer">
+          <button onClick={increment} className="text-4xl cursor-pointer">
             +
-          </div>
+          </button>
         </div>
-        <div
-          className="border w-[150px] text-xl rounded-lg my-2
-        bg-gray-50 cursor-pointer
-        h-16 flex items-center justify-center text-black font-bold"
+        <button
+          className="border w-48 h-16 text-xl rounded-lg my-2 bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-black font-bold transition duration-300 ease-in-out"
           onClick={addBasket}
         >
-          Sepete Ekle
-        </div>
+          Add to Cart
+        </button>
       </div>
     </div>
   );
