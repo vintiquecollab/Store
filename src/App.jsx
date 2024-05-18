@@ -15,6 +15,8 @@ function App() {
       <PageContainer>
         <Navbar />
         <Routes>
+
+          <Route path="/" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path="/products/:id" element={<Detail />} />
           <Route path="/cart" element={<Cart />} />

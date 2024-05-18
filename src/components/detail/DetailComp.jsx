@@ -31,7 +31,7 @@ const DetailComp = ({ productDetail }) => {
   return (
     <div className="flex gap-10 my-10">
       <img
-        className="w-96 h-96 object-cover my-auto"
+        className="w-100 h-100 object-cover my-auto"
         src={productDetail?.media?.url}
         alt={productDetail?.title}
       />

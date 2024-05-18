@@ -7,7 +7,7 @@ const Product = ({ product }) => {
   return (
     <div
       onClick={() => navigate(`products/${product._id}`)}
-      className="group max-w-xs p-6 m-4 border border-gray-200 rounded-xl shadow-lg relative h-96 cursor-pointer hover:shadow-2xl transition-shadow duration-300 bg-white"
+      className="group   h-[380px] max-w-xs p-6 m-4 border border-gray-200 rounded-xl shadow-lg relative h-96 cursor-pointer hover:shadow-2xl transition-shadow duration-300 bg-white"
     >
       <div className="text-2xl font-bold absolute rounded-full top-2 p-2 right-1.5 bg-black text-white">
         {" "}
