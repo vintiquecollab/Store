@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCartTotal } from "../redux/slices/cartSlice";
 import CartComp from "../components/cart/CartComp";
+import Navbar from "../components/Navbar";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Cart = () => {
 
   return (
     <div>
+      <Navbar />
       {carts?.length > 0 ? (
         <div>
           {carts?.map((cart, i) => (
