@@ -19,6 +19,16 @@ const initialState = {
   totalAmount: 0,
 };
 
+const calculateTotals = (carts) => {
+  const totalAmount = carts.reduce((cartTotal, cartItem) => {
+    return cartTotal + cartItem.price * cartItem.quantity;
+  }, 0);
+
+  const itemCount = carts.length;
+
+  return { totalAmount, itemCount };
+};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -28,40 +38,42 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (isItemCart) {
-        const tempCart = state.carts.map((item) => {
+        state.carts = state.carts.map((item) => {
           if (item.id === action.payload.id) {
             let tempQty = item.quantity + action.payload.quantity;
-            let tempTotalPrice = tempQty + item.price;
             return {
               ...item,
               quantity: tempQty,
-              totalPrice: tempTotalPrice,
             };
           } else {
             return item;
           }
         });
-        state.carts = tempCart;
-        storeInLocalStorage(state.carts);
       } else {
         state.carts.push(action.payload);
-        storeInLocalStorage(state.carts);
       }
+      const totals = calculateTotals(state.carts);
+      state.totalAmount = totals.totalAmount;
+      state.itemCount = totals.itemCount;
+      storeInLocalStorage(state.carts);
     },
     removeFromCart: (state, action) => {
-      const tempCart = state.carts.filter((item) => item.id !== action.payload);
-      state.carts = tempCart;
+      state.carts = state.carts.filter((item) => item.id !== action.payload);
+      const totals = calculateTotals(state.carts);
+      state.totalAmount = totals.totalAmount;
+      state.itemCount = totals.itemCount;
       storeInLocalStorage(state.carts);
     },
     clearCart: (state) => {
       state.carts = [];
+      state.totalAmount = 0;
+      state.itemCount = 0;
       storeInLocalStorage(state.carts);
     },
     getCartTotal: (state) => {
-      state.totalAmount = state.carts.reduce((cartTotal, cartItem) => {
-        return (cartTotal += cartItem.price * cartItem.quantity);
-      }, 0);
-      state.itemCount = state.carts.length;
+      const totals = calculateTotals(state.carts);
+      state.totalAmount = totals.totalAmount;
+      state.itemCount = totals.itemCount;
     },
   },
 });

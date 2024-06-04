@@ -11,16 +11,16 @@ const Category = ({ setCategory }) => {
   }, [dispatch]);
 
   return (
-    <div className="w-1/4 bg-white p-6 rounded-lg shadow-lg">
-      <div className="border-b pb-2 text-xl font-semibold text-gray-800 mb-4">
+    <div className="w-full md:w-1/4 bg-white p-6 rounded-xl shadow-lg">
+      <div className="border-b pb-4 text-2xl font-bold text-gray-800 mb-4">
         Categories
       </div>
-      <div className="overflow-hidden">
+      <div className="flex flex-col space-y-2">
         {categories?.map((category) => (
           <div
-            onClick={() => setCategory(category)}
-            className="text-lg cursor-pointer hover:bg-gray-100 p-3 rounded-md transition-colors duration-300 ease-in-out"
             key={category._id} // Assuming _id is unique
+            onClick={() => setCategory(category)}
+            className="text-lg font-medium cursor-pointer bg-gray-50 hover:bg-blue-50 hover:text-blue-600 p-3 rounded-lg transition-transform transform hover:scale-105 duration-200 ease-in-out"
           >
             {category.name}
           </div>

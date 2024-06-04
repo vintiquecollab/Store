@@ -6,19 +6,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Detail from "./pages/Detail";
 import Cart from "./pages/Cart";
-<<<<<<< HEAD
-import Search from "./pages/Search";
-import Login from "./pages/SingnIn";
-
-function App() {
-=======
 import Search from "./pages/Search/";
-import Login from "./components/auth/login/Login"
+import Login from "./components/auth/login/Login";
 import Signup from "./components/auth/signup/Signup";
 
 function App() {
-  
->>>>>>> 865894d (Recommitting after fixing index file)
   return (
     <>
       <PageContainer>

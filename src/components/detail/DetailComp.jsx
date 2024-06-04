@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import { addToCart } from "../../redux/slices/cartSlice";
 
 const DetailComp = ({ productDetail }) => {
@@ -8,12 +9,12 @@ const DetailComp = ({ productDetail }) => {
 
   const [quantity, setQuantity] = useState(1);
 
-  const decrement = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
+  const increment = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
-  const increment = () => {
-    if (quantity < productDetail?.rating.count) setQuantity(quantity + 1);
+  const decrement = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
   };
 
   const addBasket = () => {
@@ -68,6 +69,22 @@ const DetailComp = ({ productDetail }) => {
       </div>
     </div>
   );
+};
+
+DetailComp.propTypes = {
+  productDetail: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    price: PropTypes.number.isRequired,
+    media: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+    rating: PropTypes.shape({
+      count: PropTypes.number,
+      rate: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 export default DetailComp;
