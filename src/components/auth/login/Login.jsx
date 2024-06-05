@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../redux/slices/custemerLogin';
 import image from "../../../assets/login.jpg"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar  from "../../Navbar";
 
 // Add the Tailwind CSS forms plugin in your tailwind.config.js
 /*
@@ -19,6 +20,7 @@ import { Link } from 'react-router-dom';
 export default function Example() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate =useNavigate()
   const dispatch = useDispatch();
   const { error } = useSelector(state => state.auth);
   console.log(error)
@@ -35,12 +37,12 @@ export default function Example() {
     e.preventDefault();
     try {
       const success = await dispatch(loginUser({ email, password }));
-      if (success) {
-        await dispatch(fetchProfileuser());
-        console.log("You are authenticated");
+       if(success){
         navigate('/');
-        window.location.reload();
-      }
+
+       }
+       
+      
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -48,6 +50,7 @@ export default function Example() {
 
   return (
     <>
+    <Navbar />
       <div className="flex min-h-full flex-1">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">

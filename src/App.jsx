@@ -9,20 +9,20 @@ import Cart from "./pages/Cart";
 import Search from "./pages/Search/";
 import Login from "./components/auth/login/Login";
 import Signup from "./components/auth/signup/Signup";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
     <>
       <PageContainer>
         <Routes>
-          <Route path="/auth" element={<Login />} />
-
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/products/:id" element={<Detail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/search" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </PageContainer>
     </>
