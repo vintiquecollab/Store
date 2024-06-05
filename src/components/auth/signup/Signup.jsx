@@ -1,19 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser } from '../../../redux/slices/custemerLogin';
-import image from "../../../assets/login.jpg";
-
-// Ajoutez le plugin Tailwind CSS forms dans votre fichier tailwind.config.js
-/*
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-*/
+import imagec from "../../../assets/login.jpg";
+import Navbar from "../../Navbar";
 
 export default function Signup() {
   const [name, setName] = useState('');
@@ -23,24 +12,70 @@ export default function Signup() {
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [password, setPassword] = useState('');
+  const [image, setImage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    country: '',
+    city: '',
+    zipCode: '',
+    password: '',
+    image: null,
+  });
   const dispatch = useDispatch();
-   
 
+   // Handle form input changes
+   const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === 'image') {
+      setFormData({ ...formData, image: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  }; 
+
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { name, email, phoneNumber, country, city, zipCode, password, image } = formData;
+    
+    const custemer = new FormData();
+    custemer.append('name', name);
+    custemer.append('email', email);
+    custemer.append('phoneNumber', phoneNumber.toString());
+    custemer.append('country', country);
+    custemer.append('city', city);
+    custemer.append('zipCode', zipCode.toString());
+    custemer.append('password', password);
+    custemer.append('image', image);
+
     try {
-      const success = await dispatch(signupUser({ name, email, phoneNumber, country, city, zipCode, password }));
+      const success = await dispatch(signupUser(custemer));
+
       if (success) {
-        console.log("User registered successfully");
-        navigate('/login');
+        alert('your account  created successfully');
+        window.location.reload();
+        setFormData({
+          name: '',
+          email: '',
+          phoneNumber: '',
+          country: '',
+          city: '',
+          zipCode: '',
+          password: '',
+        });
+        setVisible(false);
       }
     } catch (error) {
-      console.error('Error signing up:', error);
+      console.error('Error adding customer:', error);
     }
   };
 
   return (
     <>
+      <Navbar />
       <div className="flex min-h-full flex-1">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -52,7 +87,7 @@ export default function Signup() {
 
             <div className="mt-10">
               <div className="border border-gray-300 p-6 rounded-md shadow-sm">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-x-6 gap-y-4">
                   <div>
                     <label
                       htmlFor="name"
@@ -66,28 +101,8 @@ export default function Signup() {
                         name="name"
                         type="text"
                         required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Email address
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.name}
+                        onChange={handleChange}
                         className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -106,8 +121,8 @@ export default function Signup() {
                         name="phoneNumber"
                         type="text"
                         required
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
                         className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -126,8 +141,8 @@ export default function Signup() {
                         name="country"
                         type="text"
                         required
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
+                        value={formData.country}
+                        onChange={handleChange}
                         className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -146,8 +161,8 @@ export default function Signup() {
                         name="city"
                         type="text"
                         required
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
+                        value={formData.city}
+                        onChange={handleChange}
                         className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -166,14 +181,34 @@ export default function Signup() {
                         name="zipCode"
                         type="text"
                         required
-                        value={zipCode}
-                        onChange={(e) => setZipCode(e.target.value)}
+                        value={formData.zipCode}
+                        onChange={handleChange}
                         className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
 
-                  <div>
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Email address
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-span-2">
                     <label
                       htmlFor="password"
                       className="block text-sm font-medium leading-6 text-gray-900"
@@ -186,14 +221,32 @@ export default function Signup() {
                         name="password"
                         type="password"
                         required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Image
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="image"
+                        name="image"
+                        type="file"
+                        onChange={handleChange}
+                        required
                         className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
 
-                  <div>
+                  <div className="col-span-2">
                     <button
                       type="submit"
                       className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -202,7 +255,6 @@ export default function Signup() {
                     </button>
                   </div>
                 </form>
-               
               </div>
             </div>
           </div>
@@ -210,7 +262,7 @@ export default function Signup() {
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
             className="absolute inset-0 h-full w-full"
-            src={image}
+            src={imagec}
             alt="Signup"
           />
         </div>

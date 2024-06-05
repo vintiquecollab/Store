@@ -1,36 +1,31 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-
+import Navbar  from "./components/Navbar";
 import PageContainer from "./containers/PageContainer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Detail from "./pages/Detail";
 import Cart from "./pages/Cart";
-<<<<<<< HEAD
-import Search from "./pages/Search";
-import Login from "./pages/SingnIn";
-
-function App() {
-=======
 import Search from "./pages/Search/";
 import Login from "./components/auth/login/Login"
 import Signup from "./components/auth/signup/Signup";
+import Profile from "./pages/Profile";
 
 function App() {
   
->>>>>>> 865894d (Recommitting after fixing index file)
   return (
     <>
       <PageContainer>
+        
         <Routes>
-          <Route path="/auth" element={<Login />} />
-
+       
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/products/:id" element={<Detail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/search" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </PageContainer>
     </>
