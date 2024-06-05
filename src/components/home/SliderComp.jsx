@@ -14,48 +14,49 @@ const SliderComp = () => {
       <Slider {...settings}>
         <div className="!flex items-center justify-center px-4">
           <div>
-            <h1 className="text-4xl font-bold py-8">MacBook Pro 13</h1>
+            <h1 className="text-4xl font-bold py-8">
+              Rediscover Classic Entertainment with Vintage TVs
+            </h1>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              corporis voluptate eveniet ullam architecto. Quod impedit quia
-              repudiandae nostrum tenetur aspernatur assumenda culpa odit et, at
-              earum est hic error.
+              Explore our curated collection of vintage TVs. Relive the golden
+              age of broadcasting with timeless designs and nostalgic charm.
             </p>
             <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">
               SHOP
             </button>
           </div>
-          <img src="src\assets\mac.png" alt="" className="w-[2] h-[2]" />
+          <img src="src\assets\tv.png" alt="" className="w-[2] h-[2]" />
         </div>
         <div className="!flex items-center justify-center">
           <div>
-            <h1 className="text-4xl font-bold py-8">Fashion</h1>
+            <h1 className="text-4xl font-bold py-8">
+              {" "}
+              Timeless Elegance: Vintage Cars that Define an Era
+            </h1>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              corporis voluptate eveniet ullam architecto. Quod impedit quia
-              repudiandae nostrum tenetur aspernatur assumenda culpa odit et, at
-              earum est hic error.
+              Experience the elegance and charm of classic automotive history
+              with our curated collection of vintage cars.
             </p>
             <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">
               SHOP
             </button>
           </div>
-          <img src="src\assets\clothes.png" alt="" />
+          <img src="src\assets\car.png" alt="" />
         </div>
         <div className="!flex items-center justify-center">
           <div>
-            <h1 className="text-4xl font-bold py-8">Art</h1>
+            <h1 className="text-4xl font-bold py-8">
+              Capture Timeless Moments with Vintage Cameras
+            </h1>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-              corporis voluptate eveniet ullam architecto. Quod impedit quia
-              repudiandae nostrum tenetur aspernatur assumenda culpa odit et, at
-              earum est hic error.
+              Capture history with our curated vintage cameras. Perfect for
+              enthusiasts and collectors alike.
             </p>
             <button className="border rounded-full w-[120px] my-6 bg-red-300 text-2xl cursor-pointer">
               SHOP
             </button>
           </div>
-          <img src="src\assets\art.png" alt="" />
+          <img src="src\assets\camera.png" alt="" />
         </div>
       </Slider>
     </div>
